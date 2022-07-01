@@ -6,7 +6,7 @@
     "node": true,
     "es6": true
   },
-   "extends": ["plugin:prettier/recommended"], // 使用 pretter推荐配置 
+  "extends": ["plugin:prettier/recommended"], // 使用 pretter推荐配置
   "parserOptions": {
     // 配置js代码语言选项
     "sourceType": "module",
