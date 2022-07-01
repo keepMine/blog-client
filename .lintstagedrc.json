@@ -3,7 +3,6 @@
   "*.md": ["prettier --write"],
   "src/**/*.vue": [
     "prettier --write",
-    "eslint --fix",
-    "git add"
+    "eslint --fix"
   ]
 }
