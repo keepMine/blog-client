@@ -7,6 +7,8 @@ const HtmlWebpackPlugin  = require("html-webpack-plugin");
 // 处理vue文件的loader
 const {VueLoaderPlugin}  = require("vue-loader/dist/index");
 
+const EslintWebpackPlugin = require("eslint-webpack-plugin")
+
 const webpack = require("webpack")
 
 const {title} = require("../setting")
@@ -66,10 +68,11 @@ module.exports = {
       filename: 'index.html', // 打包后的文件名
     }),
     new VueLoaderPlugin(),
-    // new webpack.DefinePlugin({
-    //   DEV_URL: JSON.stringify('www.dev.com/'),
-    //   PROD_URL: JSON.stringify('www.uat.com/'),
-    //   'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
-    // })
+    new EslintWebpackPlugin(),
+    new webpack.DefinePlugin({
+      DEV_URL: JSON.stringify('www.dev.com/'),
+      PROD_URL: JSON.stringify('www.uat.com/'),
+      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
+    })
   ]
 }

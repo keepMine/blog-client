@@ -8,9 +8,6 @@ export default createStore({
       arr: [1,2,3,4]
     }
   },
-  getters: {
-   
-  },
   mutations: {
     increment(state,paload) {
       state.num += paload
@@ -21,7 +18,7 @@ export default createStore({
   },
   actions: {
     increment(context,paload) {
-      return new Promise((resolve,reject) => {
+      return new Promise((resolve) => {
         setTimeout(() => {
           context.commit('increment',paload)
           console.log('first')
