@@ -1,5 +1,5 @@
 export default {
   hello: () => {
-    console.log('utils')
-  }
-}
+    console.log('utils');
+  },
+};

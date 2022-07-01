@@ -1,0 +1,39 @@
+{
+  "files.associations": {
+    "*.cjson": "jsonc",
+    "*.wxss": "css",
+    "*.wxs": "javascript",
+    ".js": "html",
+    ".vue": "html"
+  },
+  "vetur.format.defaultFormatter.html": "js-beautify-html",
+  "eslint.validate": ["javascript", "javascriptreact", "vue", "typescript"],
+  "eslint.probe": ["javascript", "vue", "html", "ts"],
+  "eslint.options": {
+    "extensions": [".js", ".vue", ".ts"]
+  },
+  "editor.tabSize": 2,
+  "editor.defaultFormatter": "esbenp.prettier-vscode", //  默认使用 prettier 作为格式化工具
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "[wxml]": {
+    "editor.defaultFormatter": "qiu8310.minapp-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "[html]": {
+    "editor.defaultFormatter": "vscode.html-language-features"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[vue]": {
+    "editor.defaultFormatter": "octref.vetur"
+  },
+  "prettier.singleQuote": true,
+  "prettier.semi": false,
+  "files.eol": "\n"
+}
