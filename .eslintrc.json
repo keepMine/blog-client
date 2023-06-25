@@ -46,10 +46,10 @@
     "eqeqeq": [2, "always"], // 使用===
     "indent": [
       // 强制使用一致的缩进
-      1,
-      1,
+      2,
+      2,
       {
-        "SwitchCase": 1
+        "SwitchCase": 2
       }
     ]
   },
