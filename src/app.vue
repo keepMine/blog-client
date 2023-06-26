@@ -4,18 +4,14 @@
   <router-view></router-view>
 </template>
 
-<script>
-export default {
-  setup() {
-    const testFunc = () => {
-      console.log('first', 1);
-    };
-
-    return {
-      testFunc,
-    };
-  },
+<script setup>
+import { onMounted } from 'vue';
+const testFunc = () => {
+  console.log('first', 1);
 };
+onMounted(() => {
+  testFunc();
+});
 </script>
 
 <style lang="less" scoped>
