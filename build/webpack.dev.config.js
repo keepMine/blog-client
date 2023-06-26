@@ -16,6 +16,6 @@ module.exports = merge(baseConfig, {
     open: true, //自动打开浏览器
     hot: true, //启用热更新
     host: 'localhost',
-    port: 9090,
+    port: 9890,
   },
 });

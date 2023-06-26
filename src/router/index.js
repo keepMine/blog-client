@@ -1,17 +1,16 @@
-import About from '@/view/AboutSection.vue';
-import Home from '@/view/HomeSection.vue';
 import { createRouter, createWebHashHistory } from 'vue-router';
 const routes = [
   {
     path: '/',
-    component: Home,
+    component: import('@/view/HomeSection.vue'),
   },
   {
     path: '/about',
-    component: About,
+    component: import('@/view/AboutSection.vue'),
   },
 ];
 export default createRouter({
   history: createWebHashHistory(),
+  scrollBehavior: () => ({ y: 0 }),
   routes,
 });
