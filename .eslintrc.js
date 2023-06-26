@@ -1,4 +1,7 @@
-{
+const path = require('path');
+const babelConfigPath = path.resolve(__dirname, './babel.config.js');
+
+module.exports = {
   "env": {
     // 当前的环境
     "browser": true,
@@ -12,10 +15,14 @@
     // 配置js代码语言选项
     "sourceType": "module",
     "ecmaVersion": 6,
-    "ecmaFeatures": {}
-     // "parser": "@babel/eslint-parser"
+    "ecmaFeatures": {},
+    "requireConfigFile": false,
+    "babelOptions": {
+      "configFile": babelConfigPath // 根据实际情况设置 Babel 配置文件的路径
+    },
+    "parser": "@babel/eslint-parser"
   },
-  // "parser": "esprima", // 指定eslint解析器
+  // "parser": "@babel/eslint-parser", // 指定eslint解析器
   "rules": {
     // 0 关闭 1 警告 2 错误
     "no-unused-vars": 2,

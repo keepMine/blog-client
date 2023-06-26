@@ -1,5 +1,5 @@
 <template>
-  <div @click="goToItem" class="box">about</div>
+  <div class="box" @click="goToItem">about</div>
   <div>{{ num }}---{{ name }}</div>
   <button @click="add">add++</button>
   <button @click="de">decrement</button>
@@ -8,9 +8,8 @@
 </template>
 
 <script>
-import utils from 'utils/index';
 import img from '@/asset/images/2010619.jpg';
-import { mapState, mapMutations, mapActions, mapGetters } from 'vuex';
+import { mapState, mapMutations, mapActions } from 'vuex';
 export default {
   data() {
     return {

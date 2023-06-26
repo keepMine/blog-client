@@ -6,7 +6,6 @@
 </template>
 
 <script>
-import utils from 'utils/index';
 import img from '@/asset/images/2010619.jpg';
 export default {
   data() {
