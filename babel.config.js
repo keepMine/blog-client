@@ -6,6 +6,8 @@ module.exports = {
         targets: {
           browsers: ['last 2 versions'], // 最近 2 个版本的浏览器
         },
+        useBuiltIns: 'usage',
+        corejs: '3.6.5',
       },
     ],
   ],

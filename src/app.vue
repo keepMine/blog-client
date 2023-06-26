@@ -8,7 +8,7 @@
 export default {
   setup() {
     const testFunc = () => {
-      console.log('first');
+      console.log('first', 1);
     };
 
     return {

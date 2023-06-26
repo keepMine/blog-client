@@ -12,6 +12,7 @@
   "eslint.options": {
     "extensions": [".js", ".vue", ".ts"]
   },
+  "eslint.workingDirectories": ["./src"],
   "editor.tabSize": 2,
   "editor.defaultFormatter": "esbenp.prettier-vscode", //  默认使用 prettier 作为格式化工具
   "editor.formatOnSave": true,
