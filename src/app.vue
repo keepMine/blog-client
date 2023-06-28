@@ -6,11 +6,13 @@
 
 <script setup>
 import { onMounted } from 'vue';
-const testFunc = () => {
-  console.log('first', 1);
+import { getArticleList } from '@/api/article';
+const getList = async () => {
+  const res = await getArticleList();
+  console.log('res', res);
 };
 onMounted(() => {
-  testFunc();
+  getList();
 });
 </script>
 

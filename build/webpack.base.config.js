@@ -8,8 +8,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { VueLoaderPlugin } = require('vue-loader/dist/index');
 
 // const EslintWebpackPlugin = require('eslint-webpack-plugin');
-
-const webpack = require('webpack');
+// const webpack = require('webpack');
 
 const { title } = require('../setting');
 module.exports = {
@@ -19,7 +18,7 @@ module.exports = {
     // 这里可以把一些常用的路径重写，方便页面引入
     alias: {
       '@': path.resolve(__dirname, '../src'),
-      utils: path.resolve(__dirname, '../src/utils/'),
+      utils: path.resolve(__dirname, '../src/utils'),
     },
   },
   entry: path.resolve(__dirname, '../src/main.js'), //webpack的入口文件
@@ -70,10 +69,11 @@ module.exports = {
     // new EslintWebpackPlugin({
     //   fix: true,
     // }),
-    new webpack.DefinePlugin({
-      DEV_URL: JSON.stringify('www.dev.com/'),
-      PROD_URL: JSON.stringify('www.uat.com/'),
-      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
-    }),
+    // DefinePlugin插件的作用是为process.env中注入环境变量
+    // new webpack.DefinePlugin({
+    //   'process.env': {
+    //     A_B: JSON.stringify('ab')
+    //   },
+    // }),
   ],
 };

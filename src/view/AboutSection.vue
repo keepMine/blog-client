@@ -1,5 +1,5 @@
 <template>
-  <div class="box" @click="goToItem">about</div>
+  <div class="box" @click="goToItem"><span class="label">about</span></div>
   <div>{{ num }}---{{ name }}</div>
   <button @click="add">add++</button>
   <button @click="de">decrement</button>
@@ -82,6 +82,9 @@ export default {
   background-size: 50px 50px;
   width: 100%;
   height: 100%;
+  .label {
+    color: pink;
+  }
 }
 .img {
   width: 100%;

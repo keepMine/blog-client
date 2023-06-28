@@ -26,6 +26,7 @@
     "commitlint": "^17.0.3",
     "cross-env": "^7.0.3",
     "css-loader": "^6.7.1",
+    "dotenv-webpack": "^8.0.1",
     "eslint": "^8.43.0",
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-prettier": "^4.2.1",
@@ -49,6 +50,7 @@
     "webpack-merge": "^5.8.0"
   },
   "dependencies": {
+    "axios": "^1.4.0",
     "vue": "^3.2.37",
     "vue-router": "^4.0.16",
     "vuex": "^4.0.2"
