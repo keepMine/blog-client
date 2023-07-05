@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><%= webpackConfig.name %></title>
   </head>
-  <body class="base-style-spring" style>
+  <body class="base-style-spring" style onload="init()">
     <noscript>
       <strong>
         We're sorry but <%= webpackConfig.name %> doesn't work properly without JavaScript
@@ -15,4 +15,15 @@
     </noscript>
     <div id="app"></div>
   </body>
+  <script>
+    const init = () => {
+      var browserHeight = window.innerHeight;
+      document.getElementById('app').style.height = browserHeight + 'px';
+      window.addEventListener('resize', function () {
+        // 在窗口大小变化时执行的操作
+        var browserHeight = window.innerHeight;
+        document.getElementById('app').style.height = browserHeight + 'px';
+      });
+    };
+  </script>
 </html>
