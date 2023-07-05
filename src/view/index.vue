@@ -4,6 +4,7 @@
     <header class="header">
       <TopBar />
     </header>
+    <ChangeSkin />
     <section class="content">
       <router-view></router-view>
     </section>
@@ -12,6 +13,7 @@
 
 <script setup>
 import TopBar from '@layout/TopBar.vue';
+import ChangeSkin from '@layout/ChangeSkin.vue';
 </script>
 <style lang="less" scoped>
 section {
