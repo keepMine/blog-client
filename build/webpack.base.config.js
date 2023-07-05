@@ -18,7 +18,12 @@ module.exports = {
     // 这里可以把一些常用的路径重写，方便页面引入
     alias: {
       '@': path.resolve(__dirname, '../src'),
-      utils: path.resolve(__dirname, '../src/utils'),
+      '@utils': path.resolve(__dirname, '../src/utils'),
+      '@asset': path.resolve(__dirname, '../src/asset'),
+      '@layout': path.resolve(__dirname, '../src/components/Layout'),
+      '@common': path.resolve(__dirname, '../src/components/Common'),
+      '@view': path.resolve(__dirname, '../src/view'),
+      '@constants': path.resolve(__dirname, '../src/constants'),
     },
   },
   entry: path.resolve(__dirname, '../src/main.js'), //webpack的入口文件

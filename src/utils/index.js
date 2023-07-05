@@ -1,5 +1,3 @@
-export default {
-  hello: () => {
-    console.log('utils', 1);
-  },
+export const capitalizeFirstLetter = str => {
+  return str.charAt(0).toUpperCase() + str.slice(1);
 };

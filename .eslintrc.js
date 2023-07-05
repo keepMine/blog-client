@@ -61,6 +61,7 @@ module.exports = {
         SwitchCase: 2,
       },
     ],
+    'vue/multi-word-component-names': 'off', // off为关闭，error为报错 检查文件命名是否遵循驼峰
   },
   overrides: [
     // 禁用files 文件被eslint检测

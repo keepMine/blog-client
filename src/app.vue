@@ -1,11 +1,10 @@
 <template>
-  <router-link to="/">home</router-link>
-  <router-link to="/about">about</router-link>
-  <router-view></router-view>
+  <Layout />
 </template>
 
 <script setup>
 import { onMounted } from 'vue';
+import Layout from '@view/index.vue';
 import { getArticleList } from '@/api/article';
 const getList = async () => {
   const res = await getArticleList();
@@ -16,12 +15,4 @@ onMounted(() => {
 });
 </script>
 
-<style lang="less" scoped>
-div {
-  width: 500px;
-  height: 500px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-</style>
+<style lang="less" scoped></style>

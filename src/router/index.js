@@ -1,14 +1,18 @@
 import { createRouter, createWebHashHistory } from 'vue-router';
-const routes = [
+import { BARLIST } from '@constants/topBar';
+import { capitalizeFirstLetter } from '@utils/index';
+let routes = [
   {
     path: '/',
-    component: import('@/view/HomeSection.vue'),
-  },
-  {
-    path: '/about',
-    component: import('@/view/AboutSection.vue'),
+    redirect: '/home',
   },
 ];
+const routeList = BARLIST.map(item => capitalizeFirstLetter(item.value));
+const barRoutes = routeList.map(router => ({
+  path: `/${router}`,
+  component: import(`@/view/${router}.vue`),
+}));
+routes = [...routes, ...barRoutes];
 export default createRouter({
   history: createWebHashHistory(),
   scrollBehavior: () => ({ y: 0 }),
