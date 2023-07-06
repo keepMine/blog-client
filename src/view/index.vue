@@ -1,10 +1,8 @@
 <!--  -->
 <template>
   <section class="section">
-    <header class="header">
-      <TopBar />
-    </header>
-    <ChangeSkin />
+    <SideBar />
+
     <section class="content">
       <router-view></router-view>
     </section>
@@ -12,20 +10,15 @@
 </template>
 
 <script setup>
-import TopBar from '@layout/TopBar.vue';
-import ChangeSkin from '@layout/ChangeSkin.vue';
+import SideBar from '@layout/SideBar.vue';
+// import ChangeSkin from '@layout/ChangeSkin.vue';
 </script>
 <style lang="less" scoped>
 .section {
   display: flex;
-  flex-direction: column;
   justify-content: flex-start;
-  align-items: center;
+  align-items: flex-start;
   box-sizing: border-box;
-  padding: 16px;
   height: 100%;
-}
-.header {
-  width: 60%;
 }
 </style>

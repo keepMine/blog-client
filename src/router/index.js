@@ -1,5 +1,5 @@
 import { createRouter, createWebHashHistory } from 'vue-router';
-import { BARLIST } from '@constants/topBar';
+import { BARLIST } from '@constants/sideBar';
 import { capitalizeFirstLetter } from '@utils/index';
 let routes = [
   {
