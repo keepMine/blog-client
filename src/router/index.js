@@ -7,10 +7,17 @@ let routes = [
     redirect: '/home',
   },
 ];
-const routeList = BARLIST.map(item => capitalizeFirstLetter(item.value));
+const routeList = BARLIST.map(item => ({
+  label: item.label,
+  value: capitalizeFirstLetter(item.value),
+}));
 const barRoutes = routeList.map(router => ({
-  path: `/${router}`,
-  component: import(`@/view/${router}.vue`),
+  path: `/${router.value}`,
+  name: router.value,
+  component: () => import(`@/view/${router.value}.vue`),
+  meta: {
+    title: router.label,
+  },
 }));
 routes = [...routes, ...barRoutes];
 export default createRouter({

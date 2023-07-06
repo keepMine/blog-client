@@ -6,7 +6,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 // 处理vue文件的loader
 const { VueLoaderPlugin } = require('vue-loader/dist/index');
-
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 // const EslintWebpackPlugin = require('eslint-webpack-plugin');
 // const webpack = require('webpack');
 
@@ -71,6 +71,15 @@ module.exports = {
       filename: 'index.html', // 打包后的文件名
     }),
     new VueLoaderPlugin(),
+    new CopyWebpackPlugin({
+      // 复制public下的资源到webpack打包输出目录
+      patterns: [
+        {
+          from: 'public/favicon.ico',
+          to: 'favicon.ico',
+        },
+      ],
+    }),
     // new EslintWebpackPlugin({
     //   fix: true,
     // }),

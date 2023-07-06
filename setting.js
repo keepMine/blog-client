@@ -1,3 +1,3 @@
 module.exports = {
-  title: 'wlj的博客',
+  title: 'WLJ-Blog',
 };
