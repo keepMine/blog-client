@@ -6,6 +6,7 @@
         v-for="skin in skinList"
         :key="skin.value"
         class="skin-item"
+        :style="{ backgroundColor: skin.bg }"
         @click="setSkinEvent(skin.value)"
       >
         {{ skin.label }}
@@ -17,20 +18,24 @@
 <script setup>
 const skinList = [
   {
-    label: '春天的草地',
+    label: '春',
     value: 'spring',
+    bg: '#e6fbe3',
   },
   {
-    label: '夏天的夜晚',
+    label: '夏',
     value: 'summer',
+    bg: '#023047',
   },
   {
-    label: '秋天的树林',
+    label: '秋',
     value: 'autumn',
+    bg: '#F5ECD7',
   },
   {
-    label: '冬天的雪花',
+    label: '冬',
     value: 'winter',
+    bg: '#E5E5E5',
   },
 ];
 const setSkinEvent = item => {
@@ -40,17 +45,28 @@ const setSkinEvent = item => {
 <style lang="less" scoped>
 .ChangeSkin {
   .skin-list {
-    display: grid;
-    grid-gap: 6px;
-    grid-template-rows: auto auto;
-    grid-template-columns: auto auto;
+    display: flex;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+    transition: transform 0.3s ease-in-out, box-shadow 0.5s ease-in-out;
+    border-radius: 50%;
+    &:hover {
+      transform: scale(1.2);
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+    }
     .skin-item {
-      width: 100px;
-      height: 100px;
-      border: 1px solid #7c7878;
+      width: 36px;
+      height: 36px;
+      cursor: pointer;
       display: flex;
       justify-content: center;
       align-items: center;
+      color: #a49d9d;
+      &:first-child {
+        border-radius: 50% 0 0 50%;
+      }
+      &:last-child {
+        border-radius: 0 50% 50% 0;
+      }
     }
   }
 }

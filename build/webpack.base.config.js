@@ -24,6 +24,7 @@ module.exports = {
       '@common': path.resolve(__dirname, '../src/components/Common'),
       '@view': path.resolve(__dirname, '../src/view'),
       '@constants': path.resolve(__dirname, '../src/constants'),
+      '@global': path.resolve(__dirname, '../'),
     },
   },
   entry: path.resolve(__dirname, '../src/main.js'), //webpack的入口文件
@@ -52,7 +53,7 @@ module.exports = {
         exclude: path.resolve(__dirname, '../node_modules'),
       },
       {
-        test: /\.jpe?g|png|gif$/,
+        test: /\.jpe?g|png|gif|svg$/,
         use: {
           loader: 'url-loader',
           options: {

@@ -2,43 +2,21 @@
 <template>
   <nav class="SideBar" :style="{ width: (showStatus && '260px') || '20px' }">
     <div class="foldMenu" @click="showHandle">
-      <i v-if="showStatus" class="iconfont icon-zhedie"></i>
-      <i v-else class="iconfont icon-zhankai"></i>
+      <i class="iconfont" :class="showStatus ? 'icon-zhedie' : 'icon-zhankai'"></i>
     </div>
-    <template v-if="showStatus">
-      <div class="header"></div>
-      <div class="content">
-        <div
-          v-for="el in barList"
-          :key="el.value"
-          class="sideBar-item"
-          @click="clickSideBar(el)"
-        >
-          <span>{{ el.label }}</span>
-        </div>
-      </div>
-      <div class="footer">
-        <ChangeSkin />
-      </div>
-    </template>
+    <template v-if="showStatus"><SideContentLarge /></template>
     <template v-else>1</template>
   </nav>
 </template>
 
 <script setup>
-import { onMounted, computed, ref } from 'vue';
-import { useRouter } from 'vue-router';
-import { BARLIST } from '@constants/sideBar';
-import ChangeSkin from './ChangeSkin.vue';
-const router = useRouter();
+import { onMounted, ref } from 'vue';
+import SideContentLarge from './SideContentLarge.vue';
 const showStatus = ref(true);
 const showHandle = () => {
   showStatus.value = !showStatus.value;
 };
-const barList = computed(() => BARLIST);
-const clickSideBar = el => {
-  router.push(`/${el.value}`);
-};
+
 onMounted(() => {});
 </script>
 <style lang="less" scoped>
@@ -47,7 +25,7 @@ onMounted(() => {});
   height: 100%;
   padding: 8px;
   position: relative;
-  transition: width 0.2s linear;
+  transition: width 0.1s linear;
   .foldMenu {
     position: absolute;
     top: 0;
@@ -56,15 +34,6 @@ onMounted(() => {});
     .iconfont {
       font-size: 28px;
     }
-  }
-  .header {
-    height: 30%;
-  }
-  .content {
-    height: 50%;
-  }
-  .footer {
-    height: 20%;
   }
 }
 </style>
