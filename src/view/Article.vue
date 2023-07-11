@@ -1,11 +1,19 @@
 <!--  -->
 <template>
-  <div class="Article">Article</div>
+  <div class="Article">
+    <List :list="list">
+      <template #default="{ item }">
+        <CardItem :item="item" />
+      </template>
+    </List>
+  </div>
 </template>
 
 <script setup>
-import { onMounted } from 'vue';
+import { onMounted, ref } from 'vue';
+import CardItem from '@layout/CardItem.vue';
 import { getArticleList } from '@/api/article';
+const list = ref([{ title: 'Node的介绍' }, 2, 1, 2, 3, 3, 3, 3, 3, 3, 3]);
 const getList = async () => {
   const res = await getArticleList();
   console.log('res', res);

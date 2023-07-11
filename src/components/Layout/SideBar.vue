@@ -1,11 +1,10 @@
-<!--  -->
+<!-- 侧边栏 -->
 <template>
-  <nav class="SideBar" :style="{ width: (showStatus && '260px') || '20px' }">
+  <nav class="SideBar" :style="{ width: (showStatus && '260px') || '15px' }">
     <div class="foldMenu" @click="showHandle">
       <i class="iconfont" :class="showStatus ? 'icon-zhedie' : 'icon-zhankai'"></i>
     </div>
-    <template v-if="showStatus"><SideContentLarge /></template>
-    <template v-else>1</template>
+    <SideContentLarge v-show="showStatus" />
   </nav>
 </template>
 
@@ -33,6 +32,7 @@ onMounted(() => {});
 
     .iconfont {
       font-size: 28px;
+      cursor: pointer;
     }
   }
 }

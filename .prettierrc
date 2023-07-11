@@ -5,5 +5,13 @@
   "semi": true,
   "singleQuote": true,
   "arrowParens": "avoid",
-  "bracketSpacing": true
+  "bracketSpacing": true,
+  "overrides": [
+    {
+      "files": "*.vue",
+      "options": {
+        "vueSortAttributes": true
+      }
+    }
+  ]
 }

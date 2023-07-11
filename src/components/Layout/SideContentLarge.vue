@@ -1,4 +1,4 @@
-<!--  -->
+<!-- 侧边栏详情 -->
 <template>
   <div class="SideContentLarge">
     <div class="header">
@@ -35,7 +35,7 @@
 const { name, description } = require('@global/setting');
 import ChangeSkin from './ChangeSkin.vue';
 import { useRouter } from 'vue-router';
-import { computed, ref } from 'vue';
+import { computed, ref, onMounted } from 'vue';
 import { BARLIST } from '@constants/sideBar';
 const router = useRouter();
 const barList = computed(() => BARLIST);
@@ -44,6 +44,7 @@ const clickSideBar = (el, index) => {
   activeIndex.value = index;
   router.push(`/${el.value}`);
 };
+onMounted(() => clickSideBar(barList.value[0], 0));
 </script>
 <style lang="less" scoped>
 .SideContentLarge {
@@ -105,7 +106,13 @@ const clickSideBar = (el, index) => {
   }
   .footer {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    .tips {
+      font-size: 12px;
+      margin-top: 6px;
+    }
   }
 }
 </style>

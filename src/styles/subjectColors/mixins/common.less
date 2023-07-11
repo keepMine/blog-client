@@ -31,4 +31,34 @@
   .activeBaseContentBg {
     background-color: @baseColorE;
   }
+  .activeText {
+    color: @baseColorD;
+  }
+  .bd-b {
+    border-bottom: 1px solid @baseTextColor;
+  }
+  .bd-shadow {
+    box-shadow: 0 2px 4px @baseTextColor;
+  }
+  .ellipsis {
+    overflow: hidden; //超出的文本隐藏
+    text-overflow: ellipsis; //溢出用省略号显示
+    white-space: nowrap; // 默认不换行；
+  }
+  // 超出展示两行
+  .ellipsis-2line {
+    overflow: hidden; //超出的文本隐藏
+    display: -webkit-box;
+    -webkit-line-clamp: 2; // 超出多少行
+    -webkit-box-orient: vertical;
+    word-break: break-all;
+  }
+
+  .ellipsis-3line {
+    overflow: hidden; //超出的文本隐藏
+    display: -webkit-box;
+    -webkit-line-clamp: 3; // 超出多少行
+    -webkit-box-orient: vertical;
+    word-break: break-all;
+  }
 }
