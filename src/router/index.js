@@ -6,6 +6,13 @@ let routes = [
     path: '/',
     redirect: '/home',
   },
+  {
+    path: '/detail/:id',
+    component: () => import(`@common/ArticleContent.vue`),
+    meta: {
+      title: '详情',
+    },
+  },
 ];
 const routeList = BARLIST.map(item => ({
   label: item.label,
