@@ -16,6 +16,12 @@ export const BARLIST = [
   {
     label: '文章专题',
     value: 'article',
+    chidlren: [
+      {
+        label: '文章内容',
+        value: 'articleContent/:id',
+      },
+    ],
     meta: {
       icon: 'icon-shuba',
     },

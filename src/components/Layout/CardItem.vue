@@ -25,7 +25,7 @@ defineProps({
   item: Object,
 });
 const goToDetail = id => {
-  router.push(`/detail/${id}`);
+  router.push(`/articleContent/${id}`);
 };
 </script>
 <style lang="less" scoped>
@@ -51,7 +51,7 @@ const goToDetail = id => {
     justify-content: space-between;
     align-items: flex-start;
     .title {
-      font-size: 18px;
+      font-size: 22px;
     }
     .text {
       font-size: 14px;

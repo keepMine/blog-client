@@ -37,14 +37,20 @@ import ChangeSkin from './ChangeSkin.vue';
 import { useRouter } from 'vue-router';
 import { computed, ref, onMounted } from 'vue';
 import { BARLIST } from '@constants/sideBar';
+import { useStore } from 'vuex';
 const router = useRouter();
+const store = useStore();
 const barList = computed(() => BARLIST);
-const activeIndex = ref(0);
+const activeIndex = ref(store.state.activeSidebar);
 const clickSideBar = (el, index) => {
   activeIndex.value = index;
+  store.dispatch('setActiveSidebar', el);
+  localStorage.setItem('activeSidebar', index);
   router.push(`/${el.value}`);
 };
-onMounted(() => clickSideBar(barList.value[0], 0));
+onMounted(() => {
+  activeIndex.value = Number(localStorage.getItem('activeSidebar')) || 0;
+});
 </script>
 <style lang="less" scoped>
 .SideContentLarge {

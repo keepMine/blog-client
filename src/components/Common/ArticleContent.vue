@@ -1,7 +1,26 @@
 <!--  -->
 <template>
-  <div class="ArticleContent">
-    <div v-html="detail.content"></div>
+  <div v-if="detail" class="ArticleContent">
+    <Breadcrumb />
+    <header>
+      <h1 class="title flex-c">
+        {{ detail.title }}
+      </h1>
+      <div class="flex-c">
+        <span class="mr-16 circle-des">{{ detail.created_time }} </span>
+        <span class="circle-des">阅读 {{ detail.browse }} 次</span>
+      </div>
+      <div class="my-16 line-des des">
+        {{ detail.description }}
+      </div>
+    </header>
+    <div v-html="detail.content" />
+    <footer>
+      <div v-if="detail.category_info" class="flex-s">
+        <span class="circle-des">类别：</span>
+        <div class="bg-box">{{ detail.category_info.name }}</div>
+      </div>
+    </footer>
   </div>
 </template>
 
@@ -10,7 +29,8 @@ import { getArticleDetail } from '@/api/article';
 import { onMounted, ref } from 'vue';
 import { useRoute } from 'vue-router';
 const route = useRoute();
-const detail = ref('');
+
+const detail = ref({});
 const getDetail = async id => {
   const params = {
     id,
@@ -49,5 +69,15 @@ onMounted(() => {
 </script>
 <style lang="less" scoped>
 .ArticleContent {
+  position: relative;
+  min-height: 100%;
+  height: fit-content;
+  padding-bottom: 35px;
+  box-sizing: border-box;
+  footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }
 }
 </style>

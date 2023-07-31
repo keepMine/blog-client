@@ -42,6 +42,7 @@ const backTop = () => {
     padding: 16px;
     height: 100%;
     overflow: scroll;
+    box-sizing: border-box;
   }
   .backTop {
     position: fixed;

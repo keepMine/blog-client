@@ -17,11 +17,17 @@ module.exports = merge(baseConfig, {
   devServer: {
     // 配置热更新的本地服务器
     static: {
-      directory: path.join(__dirname, '../dist"'),
+      directory: path.join(__dirname, '../dist'),
     },
     open: true, //自动打开浏览器
     hot: true, //启用热更新
     host: 'localhost',
     port: 9890,
+    proxy: {
+      '/api': {
+        target: 'localhost:3000',
+        changeOrigin: true,
+      },
+    },
   },
 });

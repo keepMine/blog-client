@@ -18,9 +18,27 @@
   .SideBar {
     background-color: @baseContentBgDarkColor;
   }
-
   .tips {
     color: @baseTextColor;
+  }
+  .des {
+    color: @baseColorA;
+  }
+  .circle-des {
+    &::before {
+      display: inline-block;
+      content: '';
+      vertical-align: middle;
+      width: 6px;
+      height: 6px;
+      margin-right: 12px;
+      border-radius: 50%;
+      background-color: @baseColorD;
+    }
+  }
+  .line-des {
+    border-left: 4px solid @baseColorD;
+    padding-left: 4px;
   }
   .text {
     color: @baseTextDarkColor;
@@ -66,7 +84,16 @@
     -webkit-box-orient: vertical;
     word-break: break-all;
   }
-
+  .flex-s {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  .flex-c {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
   .ArticleContent {
     color: @baseTextColor;
   }
@@ -78,6 +105,20 @@
   }
   .copy-code-node {
     cursor: pointer;
+  }
+  .title {
+    font-size: 34px;
+    font-weight: 900;
+    color: @baseColorB;
+  }
+  .bg-box {
+    box-sizing: border-box;
+    color: @baseTextDarkColor;
+    font-size: 13px;
+    background: @baseContentBgDarkColor;
+    padding: 8px 16px;
+    border-radius: 4px;
+    overflow: hidden;
   }
   .hljs {
     box-sizing: border-box;

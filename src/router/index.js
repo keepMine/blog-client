@@ -1,34 +1,65 @@
 import { createRouter, createWebHashHistory } from 'vue-router';
-import { BARLIST } from '@constants/sideBar';
-import { capitalizeFirstLetter } from '@utils/index';
-let routes = [
+const routes = [
   {
     path: '/',
     redirect: '/home',
   },
   {
-    path: '/detail/:id',
+    path: '',
+    redirect: '/home',
+    meta: {
+      showInbreadcrumb: false,
+    },
+  },
+  {
+    path: '/home',
+    name: '首页',
+    component: () => import(`@/view/Home.vue`),
+    meta: {
+      title: '首页',
+      icon: 'icon-shouye-zhihui',
+    },
+  },
+  {
+    path: '/myWorks',
+    name: '个人作品',
+    component: () => import(`@/view/MyWorks.vue`),
+    meta: {
+      title: '个人作品',
+      icon: 'icon-bianji',
+    },
+  },
+  {
+    path: '/article',
+    name: '详情',
+    component: () => import(`@/view/Article.vue`),
+
+    meta: {
+      title: '文章专题',
+      icon: 'icon-shuba',
+    },
+  },
+  {
+    path: '/aboutMe',
+    name: '关于我',
+    component: () => import(`@/view/AboutMe.vue`),
+    meta: {
+      title: '关于我',
+      icon: 'icon-gerenzhongxin-zhihui',
+    },
+  },
+  {
+    path: '/articleContent/:id',
     component: () => import(`@common/ArticleContent.vue`),
     meta: {
       title: '详情',
     },
   },
 ];
-const routeList = BARLIST.map(item => ({
-  label: item.label,
-  value: capitalizeFirstLetter(item.value),
-}));
-const barRoutes = routeList.map(router => ({
-  path: `/${router.value}`,
-  name: router.value,
-  component: () => import(`@/view/${router.value}.vue`),
-  meta: {
-    title: router.label,
-  },
-}));
-routes = [...routes, ...barRoutes];
-export default createRouter({
+
+const router = createRouter({
   history: createWebHashHistory(),
   scrollBehavior: () => ({ y: 0 }),
   routes,
 });
+export default router;
