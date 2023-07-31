@@ -6,7 +6,7 @@
         <span class="label">{{ el.label }}</span>
       </div>
     </div> -->
-    <div class="bg-box back code-icon" @click="breadcrumbClick()">
+    <div class="bg-box back cursor-p" @click="breadcrumbClick()">
       <i class="iconfont icon-return-solid"></i>
       返回上级
     </div>

@@ -25,6 +25,7 @@ module.exports = {
       '@view': path.resolve(__dirname, '../src/view'),
       '@constants': path.resolve(__dirname, '../src/constants'),
       '@global': path.resolve(__dirname, '../'),
+      '@hooks': path.resolve(__dirname, '../src/hooks'),
     },
   },
   entry: path.resolve(__dirname, '../src/main.js'), //webpack的入口文件

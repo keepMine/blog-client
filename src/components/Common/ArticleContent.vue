@@ -22,16 +22,29 @@
       </div>
     </footer>
   </div>
+  <div class="list mt-26">
+    <div class="content-title mb-16">
+      <i class="iconfont icon-24gl-tags4" />
+      相关文章
+    </div>
+    <List :list="list">
+      <template #default="{ item }">
+        <CardItem :item="item" />
+      </template>
+    </List>
+  </div>
 </template>
 
 <script setup>
 import { getArticleDetail } from '@/api/article';
-import { onMounted, ref } from 'vue';
+import { onMounted, ref, watchEffect, watch } from 'vue';
 import { useRoute } from 'vue-router';
+import useArticleList from '@hooks/useArticleList.js';
 const route = useRoute();
-
 const detail = ref({});
+const { list, refetch } = useArticleList();
 const getDetail = async id => {
+  if (!id) return;
   const params = {
     id,
     is_markdown: true,
@@ -59,12 +72,15 @@ const setCodeIconsHandle = () => {
   //   copyCodeNodeList[index].addEventListener('click', e => {});
   // }
 };
+watchEffect(async () => {
+  await getDetail(route.params.id);
+});
+watch(detail, () => refetch({ category_id: detail.value.category_info.id }));
+
 onMounted(() => {
   setTimeout(() => {
     setCodeIconsHandle();
   }, 1000);
-
-  getDetail(route.params.id);
 });
 </script>
 <style lang="less" scoped>
@@ -78,6 +94,9 @@ onMounted(() => {
     position: absolute;
     bottom: 0;
     left: 0;
+  }
+  .iconfont {
+    font-size: 24px !important;
   }
 }
 </style>

@@ -18,9 +18,7 @@ export const get = (url, params) => {
 export const post = (url, params) => {
   return new Promise((resolve, reject) => {
     request
-      .post(url, {
-        params,
-      })
+      .post(url, params)
       .then(val => {
         resolve(val.data);
       })
