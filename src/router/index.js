@@ -59,7 +59,10 @@ const routes = [
 
 const router = createRouter({
   history: createWebHashHistory(),
-  scrollBehavior: () => ({ y: 0 }),
   routes,
+  scrollBehavior: () => ({ y: 0 }),
 });
+// router.beforeEach((to,from) => {
+
+// });
 export default router;

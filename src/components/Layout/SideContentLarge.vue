@@ -10,19 +10,21 @@
     </div>
     <div class="content">
       <div
-        v-for="(el, index) in barList"
+        v-for="el in barList"
         :key="el.value"
         class="sideBar-item"
-        @click="clickSideBar(el, index)"
+        @click="clickSideBar(el)"
       >
         <div
           class="icon-box baseContentBg"
-          :class="activeIndex === index && 'activeBaseContentBg'"
+          :class="active.value === el.value && 'activeBaseContentBg'"
         >
           <i class="iconfont" :class="el.meta.icon"></i>
         </div>
 
-        <span class="tips" :class="activeIndex === index && 'text'">{{ el.label }}</span>
+        <span class="tips" :class="active.value === el.value && 'text'">{{
+          el.label
+        }}</span>
       </div>
     </div>
     <div class="footer">
@@ -34,22 +36,22 @@
 <script setup>
 const { name, description } = require('@global/setting');
 import ChangeSkin from './ChangeSkin.vue';
-import { useRouter } from 'vue-router';
 import { computed, ref, onMounted } from 'vue';
 import { BARLIST } from '@constants/sideBar';
-import { useStore } from 'vuex';
-const router = useRouter();
-const store = useStore();
+import useSetRouters from '@hooks/useSetRouters.js';
+import { setIntoSession, getIntoSession } from '@utils/index';
 const barList = computed(() => BARLIST);
-const activeIndex = ref(store.state.activeSidebar);
-const clickSideBar = (el, index) => {
-  activeIndex.value = index;
-  store.dispatch('setActiveSidebar', el);
-  localStorage.setItem('activeSidebar', index);
-  router.push(`/${el.value}`);
+const active = ref('');
+const { pushRoute, replaceRoute, getRouterIntoSession } = useSetRouters();
+const clickSideBar = el => {
+  active.value = el;
+  pushRoute(`/${el.value}`);
+  setIntoSession('activeSidebar', el);
 };
 onMounted(() => {
-  activeIndex.value = Number(localStorage.getItem('activeSidebar')) || 0;
+  const sideBar = getIntoSession('activeSidebar');
+  replaceRoute(getRouterIntoSession());
+  active.value = sideBar || barList.value[0];
 });
 </script>
 <style lang="less" scoped>

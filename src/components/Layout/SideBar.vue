@@ -11,12 +11,17 @@
 <script setup>
 import { onMounted, ref } from 'vue';
 import SideContentLarge from './SideContentLarge.vue';
+import { setIntoSession, getIntoSession } from '@utils/index';
+
 const showStatus = ref(true);
 const showHandle = () => {
   showStatus.value = !showStatus.value;
+  setIntoSession('sideBarShowStatus', showStatus.value);
 };
 
-onMounted(() => {});
+onMounted(() => {
+  showStatus.value = getIntoSession('sideBarShowStatus') === false ? false : true;
+});
 </script>
 <style lang="less" scoped>
 .SideBar {

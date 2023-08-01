@@ -14,18 +14,15 @@
 </template>
 
 <script setup>
-import { useRouter } from 'vue-router';
-// import { useStore } from 'vuex';
-// const store = useStore();
-const router = useRouter();
+import useSetRouters from '@hooks/useSetRouters.js';
 
 defineProps({
   list: Array,
 });
-// const lists = [{ label: '首页' }, { label: '首页' }, { label: '首页' }];
-const breadcrumbClick = el => {
-  console.log(el);
-  router.go(-1);
+const { goBack } = useSetRouters();
+
+const breadcrumbClick = () => {
+  goBack(-1);
 };
 </script>
 <style lang="less" scoped>

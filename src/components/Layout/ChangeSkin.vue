@@ -17,7 +17,7 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref, onMounted } from 'vue';
 const skinList = [
   {
     label: '春',
@@ -40,11 +40,17 @@ const skinList = [
     bg: '#E5E5E5',
   },
 ];
-const activeSkin = ref('spring');
+const activeSkin = ref('');
 const setSkinEvent = item => {
   activeSkin.value = item;
+  localStorage.setItem('activeSkin', JSON.stringify(item));
   document.getElementsByTagName('body')[0].className = `base-style-${item}`;
 };
+onMounted(() => {
+  const activeSkin = JSON.parse(localStorage.getItem('activeSkin')) || 'spring';
+
+  setSkinEvent(activeSkin);
+});
 </script>
 <style lang="less" scoped>
 .ChangeSkin {

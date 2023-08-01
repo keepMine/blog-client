@@ -18,14 +18,15 @@
 </template>
 
 <script setup>
-import { useRouter } from 'vue-router';
-const router = useRouter();
+import useSetRouters from '@hooks/useSetRouters.js';
+
+const { pushRoute } = useSetRouters();
 
 defineProps({
   item: Object,
 });
 const goToDetail = id => {
-  router.push(`/articleContent/${id}`);
+  pushRoute(`/articleContent/${id}`);
 };
 </script>
 <style lang="less" scoped>
