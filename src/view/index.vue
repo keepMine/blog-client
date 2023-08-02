@@ -3,7 +3,11 @@
   <section class="section">
     <SideBar />
     <section class="content" @scroll="scroll">
-      <router-view></router-view>
+      <router-view v-slot="{ Component }">
+        <transition name="fade" mode="out-in" appear>
+          <component :is="Component" />
+        </transition>
+      </router-view>
     </section>
     <BackTop v-show="visiable" class="backTop" @backTop="backTop" />
   </section>
@@ -48,6 +52,17 @@ const backTop = () => {
     position: fixed;
     bottom: 20px;
     right: 20px;
+  }
+
+  .fade-enter-active,
+  .fade-leave-active {
+    transition: all 0.5s ease;
+  }
+
+  .fade-enter-from,
+  .fade-leave-to {
+    transform: translateX(30px);
+    opacity: 0;
   }
 }
 </style>

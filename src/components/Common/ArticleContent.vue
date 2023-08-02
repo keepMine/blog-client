@@ -1,37 +1,39 @@
 <!--  -->
 <template>
-  <div v-if="detail" class="ArticleContent">
-    <Breadcrumb />
-    <header>
-      <h1 class="title flex-c">
-        {{ detail.title }}
-      </h1>
-      <div class="flex-c">
-        <span class="mr-16 circle-des">{{ detail.created_time }} </span>
-        <span class="circle-des">阅读 {{ detail.browse }} 次</span>
-      </div>
-      <div class="my-16 line-des des">
-        {{ detail.description }}
-      </div>
-    </header>
-    <div v-html="detail.content" />
-    <footer>
-      <div v-if="detail.category_info" class="flex-s">
-        <span class="circle-des">类别：</span>
-        <div class="bg-box">{{ detail.category_info.name }}</div>
-      </div>
-    </footer>
-  </div>
-  <div class="list mt-26">
-    <div class="content-title mb-16">
-      <i class="iconfont icon-24gl-tags4" />
-      相关文章
+  <div>
+    <div v-if="detail" class="ArticleContent">
+      <Breadcrumb />
+      <header>
+        <h1 class="title flex-c">
+          {{ detail.title }}
+        </h1>
+        <div class="flex-c">
+          <span class="mr-16 circle-des">{{ detail.created_time }} </span>
+          <span class="circle-des">阅读 {{ detail.browse }} 次</span>
+        </div>
+        <div class="my-16 line-des des">
+          {{ detail.description }}
+        </div>
+      </header>
+      <div class="detail-content" v-html="detail.content" />
+      <footer>
+        <div v-if="detail.category_info" class="flex-s">
+          <span class="circle-des">类别：</span>
+          <div class="bg-box">{{ detail.category_info.name }}</div>
+        </div>
+      </footer>
     </div>
-    <List :list="list">
-      <template #default="{ item }">
-        <CardItem :item="item" />
-      </template>
-    </List>
+    <div class="list mt-26">
+      <div class="content-title mb-16">
+        <i class="iconfont icon-24gl-tags4" />
+        相关文章
+      </div>
+      <List :list="filteredList">
+        <template #default="{ item }">
+          <CardItem :item="item" />
+        </template>
+      </List>
+    </div>
   </div>
 </template>
 
@@ -42,7 +44,10 @@ import { useRoute } from 'vue-router';
 import useArticleList from '@hooks/useArticleList.js';
 const route = useRoute();
 const detail = ref({});
-const { list, refetch } = useArticleList();
+const { filteredList, refetch } = useArticleList({
+  init: false,
+  filterFunc: el => el.id !== detail.value.id,
+});
 const getDetail = async id => {
   if (!id) return;
   const params = {
@@ -67,10 +72,6 @@ const setCodeIconsHandle = () => {
       }
     });
   }
-  // const copyCodeNodeList = document.getElementsByClassName('copy-code-node');
-  // for (let index = 0; index < copyCodeNodeList.length; index++) {
-  //   copyCodeNodeList[index].addEventListener('click', e => {});
-  // }
 };
 watchEffect(async () => {
   await getDetail(route.params.id);
@@ -95,8 +96,11 @@ onMounted(() => {
     bottom: 0;
     left: 0;
   }
-  .iconfont {
-    font-size: 24px !important;
+  .detail-content {
+    min-height: 50vh;
   }
+}
+.iconfont {
+  font-size: 24px !important;
 }
 </style>

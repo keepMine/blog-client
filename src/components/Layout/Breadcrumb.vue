@@ -1,11 +1,6 @@
 <!-- 面包屑 -->
 <template>
-  <nav class="Breadcrumb">
-    <!-- <div class="breadcrumb-item" v-for="(el, index) in lists" :key="index">
-      <div @click="breadcrumbClick(el)">
-        <span class="label">{{ el.label }}</span>
-      </div>
-    </div> -->
+  <nav class="Breadcrumb bd-shadow">
     <div class="bg-box back cursor-p" @click="breadcrumbClick()">
       <i class="iconfont icon-return-solid"></i>
       返回上级
@@ -15,10 +10,6 @@
 
 <script setup>
 import useSetRouters from '@hooks/useSetRouters.js';
-
-defineProps({
-  list: Array,
-});
 const { goBack } = useSetRouters();
 
 const breadcrumbClick = () => {
@@ -29,8 +20,12 @@ const breadcrumbClick = () => {
 .Breadcrumb {
   height: 32px;
   display: flex;
+  width: fit-content;
   justify-content: flex-start;
   align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
 
   .breadcrumb-item {
     font-size: 14px;
